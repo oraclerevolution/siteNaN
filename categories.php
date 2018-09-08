@@ -1,9 +1,57 @@
+<?php
+
+	$titre = htmlspecialchars($_POST['titre']);
+	$prog = htmlspecialchars($_POST['prog']);
+  require('config/database.php');
+  require('constants/fonction.php');
+
+ if (isset($_POST['send'])) {
+  if (!empty($titre) && !empty($prog)){
+    $photo = imag;
+        // Testons si le fichier n'est pas trop gros
+        if ($_FILES['imag']['size'] <= 1000000)
+        {
+                // Testons si l'extension est autorisée
+                $infosfichier = pathinfo($_FILES['imag']['name']);
+                $extension_upload = $infosfichier['extension'];
+                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($extension_upload, $extensions_autorisees))
+                {
+                        // On peut valider le fichier et le stocker définitivement
+                        move_uploaded_file($_FILES['imag']['tmp_name'], 'site/' . basename($_FILES['imag']['name']));
+                       ## echo "L'envoi a bien été effectué !";
+                         
+ 
+                }
+        }
+         
+ $sql = "INSERT INTO categories (id, programme, titre, img) VALUES (?,?, '$photo')";
+   $reponse = $db->exec($sql); // ici, on demande l'exécution de la requête d'ajout
+
+   if ($reponse) {
+    echo'  <div class="alert erreurs alert-warning alert-dismissible fade show" role="alert">
+    <strong>Félicitation</strong> le formulaire a été envoyé.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>';
+   } else{
+    echo'  <div class="alert erreurs alert-warning alert-dismissible fade show" role="alert">
+    <strong>désolé, il y a eu un probleme</strong> le mail a été envoyé.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>';
+   }
+ 
+  }
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <?php require('outils/head.php'); ?>
-
-
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   <?php require('outils/nav.php'); ?>
@@ -23,8 +71,15 @@
 			<div class="header_box">
 				<h2 class="d-inline-block">Liste des catégories</h2>
 				<div class="form-group" id="form" style="display:none;"> <span class="glyphicon glyphicon-close" style="margin-left:96%;" id="fermer"> <button class="btn btn-danger">X</button><br></span> <br>
-				<input class="form-control" type="text" name="nom" id="nom" placeholder="Ajouter Catégorie" required="required"> <br> <center><button class="btn btn-success">Créer</button></center>
-				</div>
+			
+      <form action="?" method="post" enctype="multipart/form-data">
+      	<input class="form-control" type="text" name="titre" id="titre" placeholder="Ajouter Catégorie" required="required"> <br>
+        <input class="form-control" type="text" name="prog" id="prog" placeholder="Selectionner dans quel programme il sera" required="required"> <br>
+      	<input class="form-control" type="file" accept="image/*" name="imag" id="image" required="required"> <br>
+
+         <center> <input type="submit" class="btn btn-success" value="créer" name="send"> </center>
+			</form>
+        </div>
 			</div>
 			<div class="list_general reviews">
 				<ul>
@@ -118,3 +173,4 @@
    $('#form').hide(400);
  });
 </script>
+
