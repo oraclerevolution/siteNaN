@@ -99,15 +99,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i>Supprimer</a></li>
 						</ul>
 					</li>
+          <?php
+          }
+
+          $reponse->closeCursor(); // Termine le traitement de la requête
+
+          ?>
           <hr>
 				</ul>
 			</div>
-      <?php
-        }
-
-        $reponse->closeCursor(); // Termine le traitement de la requête
-
-        ?>
+      
 		</div>
 		<!-- /box_general-->
 		<nav aria-label="...">

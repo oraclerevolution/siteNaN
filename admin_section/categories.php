@@ -89,6 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 while ($donnees = $reponse->fetch()) {
                   
           ?>
+          
 						<figure><img src="img/course_1.jpg" alt=""></figure>
 						<h4>
               <?php echo $donnees['titre']; ?>
@@ -98,20 +99,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             </p>
 						
             <button type="button" class="btn btn-large btn-info">modifier categorie</button>
-            
             <button type="button" class="btn btn-large btn-danger">supprimer categorie</button>
             
             
 					</li>
           <hr>
+          <?php
+          }
+
+          $reponse->closeCursor(); // Termine le traitement de la requête
+
+          ?>
 				</ul>
 			</div>
-      <?php
-        }
-
-        $reponse->closeCursor(); // Termine le traitement de la requête
-
-        ?>
+      
 		</div>
 		<!-- /box_general-->
 		<nav aria-label="...">

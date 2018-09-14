@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +36,9 @@
 	<div id="login">
 		<aside>
 			<figure>
-				<a href="index.php"><img src="img/logo_NaN.png" width="230" height="100" data-retina="true" alt=""></a>
+				<a href="index-2.php"><img src="img/logo_NaN.png" width="230" height="100" data-retina="true" alt=""></a>
 			</figure>
-			  <form>
+			  <form action="connexion.php" method="post">
 				<div class="access_social">
 					<a href="#0" class="social_bt facebook">connexion avec Facebook</a>
 					<a href="#0" class="social_bt google">Connexion avec Google</a>
@@ -45,22 +46,22 @@
 				<div class="divider"><span>Ou</span></div>
 				<div class="form-group">
 					<span class="input">
-					<input class="input_field" type="email" autocomplete="off" name="email">
+					<input class="input_field" type="text" autocomplete="off" name="username">
 						<label class="input_label">
-						<span class="input__label-content">Votre email</span>
+						<span class="input__label-content">Votre nom</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="password" autocomplete="new-password" name="password">
+					<input class="input_field" type="password" autocomplete="new-password" name="motDePasse">
 						<label class="input_label">
 						<span class="input__label-content">Votre mot de passe</span>
 					</label>
 					</span>
 					<small><a href="#0">Mot de passe oublié ?</a></small>
 				</div>
-				<a href="#0" class="btn_1 rounded full-width add_top_60">Connexion</a>
-				<div class="text-center add_top_10">Nlouveau chez NaN ? <strong><a href="register.php">Inscrit toi !</a></strong></div>
+				<input type="submit" name="" value="Connexion" class="btn btn-primary btn-block">
+				<div class="text-center add_top_10">Nouveau chez NaN ? <strong><a href="register.php">Inscrit toi !</a></strong></div>
 			</form>
 			<div class="copy">© 2018 NaN</div>
 		</aside>

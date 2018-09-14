@@ -35,47 +35,46 @@
 			<figure>
 				<a href="index.php"><img src="img/logo_NaN.png" width="230" height="100" data-retina="true" alt=""></a>
 			</figure>
-			<form autocomplete="off">
+			<form autocomplete="off" action="insert.php" method="post">
 				<div class="form-group">
 
 					<span class="input">
-					<input class="input_field" type="text">
+					<input class="input_field" type="text" name="nom" required="">
 						<label class="input_label">
 						<span class="input__label-content">Votre Nom</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="text">
+					<input class="input_field" type="text" name="prenoms" required="">
 						<label class="input_label">
 						<span class="input__label-content">Votre prénom</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="email">
+					<input class="input_field" type="email" name="email" required="">
 						<label class="input_label">
 						<span class="input__label-content">Votre mail</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="password" id="password1">
+					<input class="input_field" type="password" id="password1" name="password1" required="">
 						<label class="input_label">
 						<span class="input__label-content">Votre mot de passe</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="password" id="password2">
+					<input class="input_field" type="password" id="password2" name="password2" required="">
 						<label class="input_label">
 						<span class="input__label-content">Confirmez le mot de passe</span>
 					</label>
 					</span>
-					
 					<div id="pass-info" class="clearfix"></div>
 				</div>
-				<a href="#0" class="btn_1 rounded full-width add_top_30">Créer le compte NaN</a>
+				<input type="submit" name="" value="Créer le compte" class="btn btn-primary btn-block">
 				<div class="text-center add_top_10">Vous avez déjà un compte ? <strong><a href="login.php">Connexion ici</a></strong></div>
 			</form>
 			<div class="copy">© 2018 NaN</div>
